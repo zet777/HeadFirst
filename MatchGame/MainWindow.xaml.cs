@@ -27,8 +27,10 @@ namespace MatchGame
             SetUpGame();
         }
 
+        
         private void SetUpGame()
         {
+            //Create a list of animal emojis
             List<string> animalEmoji = new List<string>()
             {
                 "🦊","🦊",
@@ -41,11 +43,19 @@ namespace MatchGame
                 "🐷","🐷"
             };
 
+            //Create a random object
             Random rnd = new Random();
+
+            //Loop through all the text blocks in the main grid
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
             {
+                //Generate a random index
                 int index = rnd.Next(animalEmoji.Count);
+
+                //Set the text of the text block to the animal emoji at the random index
                 textBlock.Text = animalEmoji[index];
+
+                //Remove the animal emoji from the list
                 animalEmoji.RemoveAt(index);
             }
         }
